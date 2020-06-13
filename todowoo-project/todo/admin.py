@@ -1,19 +1,10 @@
 from django.contrib import admin
-from .models import FamilyRole, Family, Person
-
+from .models import Todo
 # Register your models here.
-class FamilyRoleInline(admin.TabularInline):
-    model = FamilyRole
 
 
-class FamilyInline(admin.TabularInline):
-    model = Family
+class TodoAdmin(admin.ModelAdmin):
+    readonly_fields = ('created',)
 
 
-class PersonAdmin(admin.ModelAdmin):
-    inlines = [FamilyRoleInline]
-
-
-admin.site.register(FamilyRole)
-admin.site.register(Family)
-admin.site.register(Person, PersonAdmin,)
+admin.site.register(Todo, TodoAdmin)
